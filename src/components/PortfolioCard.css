@@ -1,0 +1,1534 @@
+/* :root {
+    --primary-blue: #667eea;
+    --secondary-purple: #764ba2;
+
+    --text-dark: #333;
+    --text-medium: #555;
+    --text-light: #666;
+
+    --bg-white: #ffffff;
+}
+
+.portfolio-card {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: var(--bg-white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.477);
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgba(173, 173, 173, 0.126);
+}
+
+.portfolio-header {
+    background: linear-gradient(145deg, #214d38 0%, #90efc1 100%);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 8px 20px 8px;
+
+
+}
+
+.portfolio-header h1 {
+    font-size: 2.5rem;
+    margin: 5px;
+}
+
+.header-decoration {
+    width: 150px;
+    height: 1px;
+    border-radius: 20px;
+    background-color: var(--bg-white);
+    margin: 2px auto 8px;
+}
+
+.avatar-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 30px;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    border: #66c195 5px solid;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.751);
+}
+.name{
+    color: var(--text-dark);
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+} */
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+    --bg: #08090b;
+    --card: #101216;
+
+    --text: #f4f4ef;
+    --text-soft: #c8c9c5;
+
+    --muted: #85888f;
+    --muted-dark: #555960;
+
+    --accent: #c8ff35;
+
+    --line: rgba(255, 255, 255, 0.10);
+    --line-soft: rgba(255, 255, 255, 0.055);
+
+    --display: "Space Grotesk", sans-serif;
+    --body: "Inter", sans-serif;
+    --mono: "DM Mono", monospace;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: var(--body);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.portfolio-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(200, 255, 53, 0.07),
+            transparent 32%),
+        radial-gradient(circle at 5% 80%,
+            rgba(255, 255, 255, 0.025),
+            transparent 25%),
+        var(--bg);
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.portfolio-page::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.4;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px);
+
+    background-size: 75px 75px;
+
+    mask-image:
+        linear-gradient(to bottom,
+            black,
+            transparent 95%);
+}
+
+
+/* =========================================================
+   AMBIENT LIGHT
+========================================================= */
+
+.ambient {
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    filter: blur(130px);
+
+    opacity: 0.025;
+
+    pointer-events: none;
+}
+
+
+.ambient-one {
+    top: 5%;
+    left: 3%;
+}
+
+
+.ambient-two {
+    right: 0;
+    bottom: 5%;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.portfolio-card {
+    width: min(1100px, 100%);
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.018)),
+        var(--card);
+
+    box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.50),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.30);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    animation:
+        card-entry 0.8s cubic-bezier(.2, .8, .2, 1);
+}
+
+
+/* =========================================================
+   CARD ENTRY
+========================================================= */
+
+@keyframes card-entry {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   TOP ACCENT LINE
+========================================================= */
+
+.portfolio-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(200, 255, 53, .5),
+            transparent);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.portfolio-header {
+    height: 58px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    padding: 0 28px;
+
+    border-bottom:
+        1px solid var(--line-soft);
+
+    background:
+        rgba(255, 255, 255, 0.015);
+}
+
+
+/* Brand */
+
+.header-brand {
+    font-family: var(--display);
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.25em;
+}
+
+
+.header-brand span {
+    color: var(--accent);
+}
+
+
+/* Status */
+
+.header-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: var(--mono);
+
+    font-size: .68rem;
+
+    color: var(--muted);
+
+    letter-spacing: .08em;
+}
+
+
+.header-status span {
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 12px var(--accent);
+}
+
+
+/* Year */
+
+.header-year {
+    text-align: right;
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono);
+
+    font-size: .62rem;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.card-content {
+    padding:
+        28px 42px 20px;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero-section {
+    display: flex;
+
+    align-items: center;
+
+    min-height: 200px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.avatar-container {
+    width: 200px;
+
+    height: 200px;
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-right: 40px;
+}
+
+
+/* =========================================================
+   AVATAR IMAGE
+========================================================= */
+
+.avatar-image-wrap {
+    width: 170px;
+
+    height: 170px;
+
+    position: relative;
+
+    z-index: 3;
+
+    padding: 7px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, .18),
+            rgba(255, 255, 255, .025));
+
+    border:
+        1px solid rgba(255, 255, 255, .15);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, .5),
+        inset 0 1px 0 rgba(255, 255, 255, .10);
+}
+
+
+.avatar-image {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    filter:
+        grayscale(1) contrast(1.05);
+
+    transition:
+        transform .5s ease-in-out,
+        filter .5s ease-in-out;
+}
+
+
+.avatar-container:hover .avatar-image {
+    transform: scale(1.23);
+
+    filter: contrast(1.5) brightness(1) saturate(0.8);
+}
+
+
+/* =========================================================
+   AVATAR ORBITS
+========================================================= */
+
+.avatar-orbit {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(200, 255, 53, .22);
+
+    pointer-events: none;
+}
+
+
+.avatar-orbit-one {
+    width: 185px;
+
+    height: 185px;
+
+    border-left-color: transparent;
+
+    border-bottom-color: transparent;
+
+    transform: rotate(-25deg);
+
+    animation:
+        orbit-one 8s linear infinite;
+}
+
+
+.avatar-orbit-two {
+    width: 200px;
+
+    height: 200px;
+
+    border-right-color: transparent;
+
+    border-top-color: transparent;
+
+    opacity: .55;
+
+    transform: rotate(35deg);
+
+    animation:
+        orbit-two 12s linear infinite;
+}
+
+
+@keyframes orbit-one {
+
+    to {
+        transform:
+            rotate(335deg);
+    }
+}
+
+
+@keyframes orbit-two {
+
+    to {
+        transform:
+            rotate(-325deg);
+    }
+}
+
+
+/* =========================================================
+   AVATAR STATUS
+========================================================= */
+
+.avatar-status {
+    position: absolute;
+
+    z-index: 5;
+
+    right: -5px;
+
+    bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(12, 13, 15, .82);
+
+    backdrop-filter: blur(15px);
+
+    color: var(--muted);
+
+    font-family: var(--mono);
+
+    font-size: .5rem;
+}
+
+
+.avatar-status span {
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+}
+
+.clg-info {
+
+    z-index: 53;
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(12, 13, 15, .82);
+
+    backdrop-filter: blur(15px);
+
+    color: var(--muted);
+
+    font-family: var(--mono);
+
+    font-size: .5rem;
+}
+
+
+.clg-info span {
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+}
+
+
+
+.clg-info span {
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+}
+
+
+/* =========================================================
+   PERSONAL INFORMATION
+========================================================= */
+
+.personal-info {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    text-align: left;
+}
+
+
+.personal-index {
+    margin-bottom: 10px;
+
+    color: var(--accent);
+
+    font-family: var(--mono);
+
+    font-size: .52rem;
+
+    letter-spacing: .15em;
+}
+
+
+.name {
+    margin: 0;
+
+    font-family: var(--display);
+
+    font-size:
+        clamp(3.2rem, 6vw, 5.7rem);
+
+    line-height: .86;
+
+    letter-spacing: -.09em;
+
+    font-weight: 700;
+}
+
+
+.role {
+    margin-top: 14px;
+
+    color: var(--accent);
+
+    font-family: var(--mono);
+
+    font-size: .62rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+.personal-meta {
+    z-index: 53;
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 0px;
+
+
+    color: var(--muted);
+
+    font-family: var(--mono);
+
+    font-size: .60rem;
+
+}
+
+
+.personal-meta span+span::before {
+    content: "•";
+
+    margin-right: 14px;
+
+    color: var(--muted-dark);
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.information-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: 12px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.bio-section {
+    display: contents;
+}
+
+
+.about-section {
+
+    min-height: 225px;
+
+    padding: 22px 24px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, .045),
+            rgba(255, 255, 255, .018));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .035);
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading,
+.social-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 15px;
+}
+
+
+.section-heading span,
+.social-heading span {
+
+    color: var(--accent);
+
+    font-family: var(--mono);
+
+    font-size: .52rem;
+}
+
+
+.section-heading h3,
+.social-heading h3 {
+
+    margin: 0;
+
+    font-family: var(--display);
+
+    font-size: .9rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: -.02em;
+}
+
+
+.section-heading::after,
+.social-heading::after {
+
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(90deg,
+            var(--line),
+            transparent);
+}
+
+
+/* =========================================================
+   BIO TEXT
+========================================================= */
+
+.bio-text {
+
+    margin: 0;
+
+    max-width: 600px;
+
+    color: var(--text-soft);
+
+    font-size: .7rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SOCIAL LINKS SECTION
+========================================================= */
+
+.social-links-section {
+
+    min-height: 225px;
+
+    padding: 22px 24px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, .045),
+            rgba(255, 255, 255, .018));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .035);
+}
+
+
+/* =========================================================
+   SOCIAL LIST
+========================================================= */
+
+.social-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 6px;
+}
+
+
+/* =========================================================
+   SOCIAL LINK
+========================================================= */
+
+.social-link {
+
+    min-height: 47px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, .025);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition:
+        transform .25s cubic-bezier(.2, .8, .2, 1),
+
+        background .25s ease,
+
+        border-color .25s ease;
+}
+
+
+.social-link:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, .055);
+
+    border-color:
+        rgba(200, 255, 53, .30);
+}
+
+
+/* =========================================================
+   SOCIAL LEFT
+========================================================= */
+
+.social-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+
+.social-number {
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono);
+
+    font-size: .65rem;
+}
+
+
+.social-platform {
+
+    font-family: var(--display);
+
+    font-size: .88rem;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SOCIAL ARROW
+========================================================= */
+
+.social-arrow {
+
+    width: 25px;
+
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    font-size: .65rem;
+
+    transition: .25s ease;
+}
+
+
+.social-link:hover .social-arrow {
+
+    color: #080900;
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    transform:
+        rotate(45deg);
+}
+
+
+/* =========================================================
+   TECH STACK
+========================================================= */
+
+.skills-section {
+
+    grid-column: 1 / -1;
+
+    padding: 18px 24px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, .045),
+            rgba(255, 255, 255, .018));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .035);
+}
+
+
+/* =========================================================
+   SKILLS HEADING
+========================================================= */
+
+.skills-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono);
+
+    font-size: .66rem;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   SKILLS GRID
+========================================================= */
+
+.skills-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 6px;
+}
+
+
+.skill-tag {
+
+    padding: 8px 6px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, .025);
+
+    color: var(--text-soft);
+
+    font-family: var(--mono);
+
+    font-size: .78rem;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    transition:
+        transform .25s ease,
+
+        background .25s ease,
+
+        border-color .25s ease,
+
+        color .25s ease;
+}
+
+
+.skill-tag:hover {
+
+    color: var(--accent);
+
+    border-color:
+        rgba(200, 255, 53, .35);
+
+    background:
+        rgba(200, 255, 53, .045);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.portfolio-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding:
+        14px 4px 0;
+
+    margin-top: 14px;
+
+    border-top:
+        1px solid var(--line-soft);
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono);
+
+    font-size: .78rem;
+
+    letter-spacing: .06em;
+}
+
+.heart {
+    color: var(--accent);
+    display: inline-block;
+    transition: all 1s ease-in-out;
+    font-size: larger;
+}
+
+.heart:hover {
+    transform: scale(1.6);
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .portfolio-card {
+        width: min(760px, 100%);
+    }
+
+
+    .card-content {
+        padding:
+            28px 25px 20px;
+    }
+
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .about-section,
+    .social-links-section {
+        min-height: auto;
+    }
+
+
+    .skills-container {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .portfolio-page {
+
+        min-height: 100vh;
+
+        align-items: flex-start;
+
+        padding: 10px;
+    }
+
+
+    .portfolio-card {
+
+        border-radius: 23px;
+    }
+
+
+    .portfolio-header {
+
+        height: 48px;
+
+        padding: 0 15px;
+    }
+
+
+    .header-brand {
+        font-family: var(--display);
+
+        font-size: .6rem;
+
+        font-weight: 700;
+
+        letter-spacing: 0.25em;
+    }
+
+
+
+    .header-brand span {
+        display: none;
+    }
+
+    .header-year {
+        display: none;
+
+    }
+
+    .header-status {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        font-family: var(--mono);
+
+        font-size: .68rem;
+
+        color: var(--muted);
+
+        letter-spacing: .08em;
+    }
+
+
+    .card-content {
+
+        padding:
+            20px 15px 15px;
+    }
+
+
+    /* -----------------------------------------
+       HERO
+    ----------------------------------------- */
+
+    .hero-section {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        margin-bottom: 18px;
+    }
+
+
+    .avatar-container {
+
+        width: 155px;
+
+        height: 155px;
+
+        margin:
+            0 auto 17px;
+    }
+
+
+    .avatar-image-wrap {
+
+        width: 125px;
+
+        height: 125px;
+    }
+
+
+    .avatar-orbit-one {
+
+        width: 142px;
+
+        height: 142px;
+    }
+
+
+    .avatar-orbit-two {
+
+        width: 155px;
+
+        height: 155px;
+    }
+
+
+    .avatar-status {
+
+        right: -5px;
+
+        bottom: 10px;
+    }
+
+
+    .personal-info {
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    .name {
+
+        font-size: 4rem;
+    }
+
+
+    .personal-meta {
+
+        justify-content: center;
+
+        font-size: .77rem;
+    }
+
+    .clg-info {
+
+        z-index: 53;
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        padding: 7px 10px;
+
+        border-radius: 9px;
+
+        border:
+            1px solid var(--line);
+
+        background:
+            rgba(12, 13, 15, .82);
+
+        backdrop-filter: blur(15px);
+
+        color: var(--muted);
+
+        font-family: var(--mono);
+
+        font-size: .67rem;
+    }
+
+
+
+    /* -----------------------------------------
+       INFORMATION
+    ----------------------------------------- */
+
+    .information-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .about-section,
+    .social-links-section,
+    .skills-section {
+
+        padding:
+            17px;
+    }
+
+
+    /* -----------------------------------------
+       SOCIAL
+    ----------------------------------------- */
+
+    .social-list {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .social-link {
+
+        min-height: 47px;
+    }
+
+
+    /* -----------------------------------------
+       SKILLS
+    ----------------------------------------- */
+
+    .skills-container {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    /* -----------------------------------------
+       FOOTER
+    ----------------------------------------- */
+
+    .portfolio-footer {
+
+        font-size: .4rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .name {
+
+        font-size: 2.55rem;
+    }
+
+
+    .skills-container {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .personal-meta {
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .personal-meta span+span::before {
+
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+    }
+
+}
