@@ -18,8 +18,8 @@ export default function SocialLinks() {
     const Links = [
         "siddiqui.maaz79@gmail.com",
         "https://github.com/maazsiddiqui79",
-        "https://www.linkedin.com/in/siddiqui-maazzz/",
         "https://the-maaz-portfolio.vercel.app/",
+        "https://www.linkedin.com/in/siddiqui-maazzz/",
         "https://www.instagram.com/siddiqui.maazzz/",
         "https://x.com/siddiquimaazzz",
         "https://www.snapchat.com/@siddiqui.maazzz",
